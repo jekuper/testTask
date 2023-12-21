@@ -36,6 +36,16 @@ public class InventorySystem : MonoBehaviour {
 
     private int firstInactive = 0;
 
+    public static InventorySystem instance;
+
+    private void Awake() {
+        if (instance != null) {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+    }
+
     public void LoadInventoryGrid(ItemsSorting itemsSorting = ItemsSorting.None, CharsSorting charSorting = CharsSorting.None) {
         int requiredCellCount = grid.FullCellCount();
 
@@ -92,6 +102,14 @@ public class InventorySystem : MonoBehaviour {
         if (!found)
             inventory.Add(data);
     }
+    public void RemoveItem(InventoryCellData item) {
+        for (int i = 0; i < inventory.Count; i++) {
+            if (inventory[i].Equals(item)) {
+                inventory.RemoveAt(i);
+                break;
+            }
+        }
+    }
     private void LoadCell(GameObject cell, InventoryCellData cellData) {
         if (cell.TryGetComponent<CellManager>(out CellManager manager)) {
             manager.Load(cellData);
@@ -103,7 +121,7 @@ public class InventorySystem : MonoBehaviour {
 
     private GameObject CreateEmpty() {
         GameObject cell;
-        if (firstInactive == cells.Count) {
+        if (firstInactive >= cells.Count) {
             cell = Instantiate(cellPrefab, scrollViewContent);
             cells.Add(cell);
             firstInactive++;

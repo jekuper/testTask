@@ -42,6 +42,7 @@ public class ItemData : ScriptableObject, IEquatable<ItemData> {
     public bool Equals(ItemData other) {
         if (other == null)
             return false;
+        
         return (
             characteristic == other.characteristic &&
             characteristicCount == other.characteristicCount &&

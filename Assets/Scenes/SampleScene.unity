@@ -1279,6 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480320354}
   - component: {fileID: 480320353}
+  - component: {fileID: 480320355}
   m_Layer: 0
   m_Name: InventorySystem
   m_TagString: Untagged
@@ -1317,6 +1318,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &480320355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480320352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34abe97c8794f054286b9d28d68070db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1211007762}
+  inventory: {fileID: 480320353}
 --- !u!1 &494826277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1516,6 @@ MonoBehaviour:
       Value: {fileID: -1192949258, guid: 5d1818896382aa04e80f29d1974aa102, type: 3}
   worldItemPrefab: {fileID: 8961158825439265808, guid: 7d74a44a7554a0f459f32f21215ec793, type: 3}
   holder: {fileID: 494826278}
-  inventory: {fileID: 480320353}
 --- !u!4 &508443919
 Transform:
   m_ObjectHideFlags: 0
@@ -2583,7 +2597,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1211007766}
+      - m_Target: {fileID: 480320355}
         m_TargetAssemblyTypeName: InventoryMenuManager, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
@@ -2644,7 +2658,6 @@ GameObject:
   - component: {fileID: 1211007763}
   - component: {fileID: 1211007765}
   - component: {fileID: 1211007764}
-  - component: {fileID: 1211007766}
   m_Layer: 5
   m_Name: inventoryMenu
   m_TagString: Untagged
@@ -2670,7 +2683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 3.317505}
+  m_AnchoredPosition: {x: 0, y: 3.317505}
   m_SizeDelta: {x: 0, y: -6.5999756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1211007764
@@ -2711,20 +2724,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211007762}
   m_CullTransparentMesh: 1
---- !u!114 &1211007766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211007762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34abe97c8794f054286b9d28d68070db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 1211007762}
-  inventory: {fileID: 480320353}
 --- !u!1 &1517017129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3839,7 +3838,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1211007766}
+      - m_Target: {fileID: 480320355}
         m_TargetAssemblyTypeName: InventoryMenuManager, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1

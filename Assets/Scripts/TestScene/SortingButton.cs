@@ -8,14 +8,14 @@ public class SortingButton : MonoBehaviour, IPointerClickHandler {
     [SerializeField] CharsSorting characteristic = CharsSorting.None;
     public void OnPointerClick(PointerEventData eventData) {
         if (type == ItemsSorting.None && characteristic != CharsSorting.None) {
-            FindFirstObjectByType<InventoryMenuManager>().characteristic = characteristic;
+            InventoryMenuManager.instance.characteristic = characteristic;
         }
         else if (type != ItemsSorting.None && characteristic == CharsSorting.None) {
-            FindFirstObjectByType<InventoryMenuManager>().type = type;
+            InventoryMenuManager.instance.type = type;
         }
         else {
-            FindFirstObjectByType<InventoryMenuManager>().type = type;
-            FindFirstObjectByType<InventoryMenuManager>().characteristic = characteristic;
+            InventoryMenuManager.instance.type = type;
+            InventoryMenuManager.instance.characteristic = characteristic;
         }
     }
 }

@@ -10,7 +10,6 @@ public class RandomItemGenerator : MonoBehaviour
 
     [SerializeField] GameObject worldItemPrefab;
     [SerializeField] Transform holder;
-    [SerializeField] InventorySystem inventory;
 
     private void Start() {
         int cnt = Random.Range(0, 60);
@@ -36,7 +35,7 @@ public class RandomItemGenerator : MonoBehaviour
 
 
         GameObject uiInstance = Instantiate(worldItemPrefab, Vector3.zero, Quaternion.identity, holder);
-        uiInstance.GetComponent<WorldItemManager>().Load(data, inventory);
+        uiInstance.GetComponent<WorldItemManager>().Load(data);
 
         RectTransform uiRectTransform = uiInstance.GetComponent<RectTransform>();
 

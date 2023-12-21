@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CellManager : MonoBehaviour
+public class CellManager : MonoBehaviour, IPointerClickHandler
 {
-    public InventoryCellData data {
-        get {
-            return _data;
-        }
-    }
     public bool isLoaded = false;
 
     private InventoryCellData _data;
@@ -21,12 +18,17 @@ public class CellManager : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] Image charImage;
 
+    [SerializeField] GameObject deleteButton;
+
     public void Load(InventoryCellData newData = null) {
         if (newData == null)
-            newData = data;
+            newData = _data;
+
+        _data = newData;
 
         isLoaded = true;
 
+        deleteButton.SetActive(false);
         countText.gameObject.SetActive(true);
         charCountText.gameObject.SetActive(true);
         itemImage.gameObject.SetActive(true);
@@ -45,11 +47,21 @@ public class CellManager : MonoBehaviour
     public void Unload() {
         isLoaded = false;
 
+        deleteButton.SetActive(false);
         countText.gameObject.SetActive(false);
         itemImage.gameObject.SetActive(false);
         charImage.gameObject.SetActive(false);
         charCountText.gameObject.SetActive(false);
 
         _data = null;
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (isLoaded) {
+            deleteButton.SetActive(!deleteButton.activeSelf);
+        }
+    }
+    public void RemoveItem() {
+        InventoryMenuManager.instance.RemoveItem(_data);
     }
 }

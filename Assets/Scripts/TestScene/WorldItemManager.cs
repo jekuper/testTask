@@ -8,16 +8,13 @@ using UnityEngine.UI;
 public class WorldItemManager : MonoBehaviour, IPointerClickHandler {
     public ItemData data;
 
-    [SerializeField] InventorySystem inventory;
-
-    public void Load(ItemData _data, InventorySystem _sys) {
+    public void Load(ItemData _data) {
         data = _data;
-        inventory = _sys;
         GetComponent<Image>().sprite = data.icon;
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        inventory.AddItem(data);
+        InventoryMenuManager.instance.AddItem(data);
         Destroy(gameObject);
     }
 }
